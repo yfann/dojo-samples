@@ -6,3 +6,4 @@ This project is used for testing dojo.
 
 + `npm install`
 + `bowser install`
++ `gulp`

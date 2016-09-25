@@ -1,0 +1,22 @@
+{
+  "name": "dojo-samples",
+  "description": "This project is used for testing dojo.",
+  "main": "gulpfile.js",
+  "authors": [
+    "Fan Yu <yfann2012@163.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/yfann/dojo-samples",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "dojo": "dojo/dojo#^1.11.2",
+    "dijit": "dojo/dijit#^1.11.2"
+  }
+}

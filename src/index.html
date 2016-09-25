@@ -2,41 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Tutorial: Hello Dojo!</title>
+    <title>Dojo-samples</title>
+    <script src="app/dojoConfig.js"></script>
+    <script src="lib/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        require([
+            'app/main'
+        ]);
+    </script>
 </head>
 <body>
-    <h1 id="greeting">Hello</h1>
-    <!-- load Dojo -->
-    <script src="scripts/dojo.js"
-            data-dojo-config="async: true"></script>
-
-    <script>
-        // require([
-        //     'dojo/dom',
-        //     'dojo/dom-construct'
-        // ], function (dom, domConstruct) {
-        //     var greetingNode = dom.byId('greeting');
-        //     domConstruct.place('<em> Dojo!</em>', greetingNode);
-        // });
-        // require(['scripts/myModule'],function(my){
-        //     my.setText('greeting','Dojo');
-        // });
-        require([
-            'dojo/dom',
-            'dojo/fx',
-            'dojo/domReady!'
-        ], function (dom, fx) {
-            // The piece we had before...
-            var greeting = dom.byId('greeting');
-            greeting.innerHTML += ' from Dojo!';
-
-            // ...but now, with an animation!
-            fx.slideTo({
-                node: greeting,
-                top: 100,
-                left: 200
-            }).play();
-        });
-    </script>
+<div data-dojo-type="app/widget/LabelBox"></div>
 </body>
 </html>
