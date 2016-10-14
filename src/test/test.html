@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+	<link rel="stylesheet" href="../../_static/js/dojo/../dijit/themes/claro/claro.css">
+	
+	<script>dojoConfig = {parseOnLoad: false, async: true, mvc: {debugBindings: true}}</script>
+	<script src='../../_static/js/dojo/dojo.js'></script>
+	
+	<script>
+require([
+    "dojo/parser", "dojo/domReady!"
+], function(parser){
+    parser.parse();
+});
+	</script>
+</head>
+<body class="claro">
+    <script type="dojo/require">at: "dojox/mvc/at"</script>
+
+<span data-dojo-id="model"
+ data-dojo-type="dojo/Stateful"
+ data-dojo-props="value: 'Foo'"></span>
+
+<input type="text"
+ data-dojo-type="dijit/form/TextBox"
+ data-dojo-props="value: at(model, 'value')">
+ 
+<span data-dojo-type="dijit/_WidgetBase"
+ data-dojo-props="_setValueAttr: {node: 'domNode', type: 'innerText'}, value: at(model, 'value')"></span>
+</body>
+</html>
