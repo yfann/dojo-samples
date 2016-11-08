@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "dojo": "dojo/dojo#^1.11.2",
-    "dijit": "dojo/dijit#^1.11.2"
+    "dijit": "dojo/dijit#^1.11.2",
+    "dgrid": "^1.1.0"
   }
 }
