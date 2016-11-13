@@ -5,7 +5,7 @@ This project is used for testing dojo.
 ## CMD
 
 + `npm install`
-+ `bowser install`
++ `bower install`
 + `gulp`
 
 
