@@ -1,14 +1,18 @@
 define([
     'app/widget/box/TextBox',
+    'dijit/registry',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
+    'dojo/query',
     'dojo/dom-construct',
+    'dojo/dom-class',
+    'dojo/dom-style',
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/on',
     'dojo/text!./templates/matrix-setting.html'
-],function(TextBox,_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,domC,declare,lang,on,template){
+],function(TextBox,registry,_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,query,domC,domClass,domStyle,declare,lang,on,template){
     return declare('app.weidget.Matrix',[
         _WidgetBase,
         _TemplatedMixin,
@@ -28,6 +32,12 @@ define([
                 this.initValue();
                 this.generateTable();
             }));
+
+            this.init();
+        },
+        init:function(){
+            this.rowNode.set('value',3);
+            this.columnNode.set('value',3);
         },
         initValue:function(){
 
@@ -60,10 +70,47 @@ define([
             domC.empty("content");
             domC.place(table,"content");
 
+            var nodes=registry.findWidgets(this.widthPane.domNode);
+
+            for(var i=0;i<nodes.length;i++)
+            {
+                this.widthPane.removeChild(nodes[i]);
+            }
 
             for(var i=0;i<this.colCount;i++)
             {
-                this.widthPane.addChild(new TextBox({class:'widthBox'}));
+                var textBox=new TextBox();
+                domClass.add(textBox.domNode,'widthBox');
+                textBox.watch('value',lang.hitch(this,function(name,oldValue,value){
+                    this.setColumnWidth();
+                }));
+                this.widthPane.addChild(textBox);
+            }
+        },
+        setColumnWidth:function(){
+            var nodes=registry.findWidgets(this.widthPane.domNode);
+            var valueArray=[],widthArray=[],sum=0;
+            for(var i=0;i<nodes.length;i++)
+            {
+                var numVal=parseInt(nodes[i].get('value'));
+                var val=isNaN(numVal)?0:numVal;
+                sum +=val;
+                valueArray.push(val);
+            }
+            for(var i=0;i<valueArray.length;i++)
+            {
+                widthArray.push(Math.round((valueArray[i]/sum)*100));
+            }
+            // console.log(valueArray);
+            // console.log(widthArray);
+
+            var rows=query('#content .table .row');
+
+            for(var i=0;i<rows.length;i++){
+                var cells=query('.cell',rows[i]);
+                for(var j=0;j<cells.length;j++){
+                   domStyle.set(cells[j],'width',widthArray[j]+'%');
+                }
             }
         }
 
