@@ -22,5 +22,17 @@
 
 .widthBox{
     width:20px;
-    margin:10px;
+    margin-bottom:5px;
+}
+
+#contentHeader .table .row .cell{
+    text-align:center;
+}
+
+#contentHeader .table{
+    border-width: 0px;
+}
+
+#contentHeader .table .cell{
+    border-width: 0px;
 }

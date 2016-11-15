@@ -70,13 +70,18 @@ define([
             domC.empty("content");
             domC.place(table,"content");
 
-            var nodes=registry.findWidgets(this.widthPane.domNode);
-
-            for(var i=0;i<nodes.length;i++)
+            domC.empty("contentHeader");
+            table=domC.create("div",{className:"table"});
+            row=domC.create("div",{className:"row"});
+            for(var j=0;j<this.colCount;j++)
             {
-                this.widthPane.removeChild(nodes[i]);
+                row.appendChild(domC.create("div",{
+                    className:"cell"
+                }));
             }
-
+            table.appendChild(row);
+            domC.place(table,"contentHeader");
+            var cells=query('#contentHeader .table .row .cell');
             for(var i=0;i<this.colCount;i++)
             {
                 var textBox=new TextBox();
@@ -84,33 +89,42 @@ define([
                 textBox.watch('value',lang.hitch(this,function(name,oldValue,value){
                     this.setColumnWidth();
                 }));
-                this.widthPane.addChild(textBox);
+                dojo.place(textBox.domNode,cells[i]);
             }
         },
         setColumnWidth:function(){
-            var nodes=registry.findWidgets(this.widthPane.domNode);
-            var valueArray=[],widthArray=[],sum=0;
-            for(var i=0;i<nodes.length;i++)
+            var nodes=registry.findWidgets(dojo.byId('contentHeader'));
+            var valueArray=[],lastColValue=100;
+            for(var i=0;i<nodes.length-1;i++)
             {
                 var numVal=parseInt(nodes[i].get('value'));
-                var val=isNaN(numVal)?0:numVal;
-                sum +=val;
-                valueArray.push(val);
-            }
-            for(var i=0;i<valueArray.length;i++)
-            {
-                widthArray.push(Math.round((valueArray[i]/sum)*100));
-            }
-            // console.log(valueArray);
-            // console.log(widthArray);
-
-            var rows=query('#content .table .row');
-
-            for(var i=0;i<rows.length;i++){
-                var cells=query('.cell',rows[i]);
-                for(var j=0;j<cells.length;j++){
-                   domStyle.set(cells[j],'width',widthArray[j]+'%');
+                var val=isNaN(numVal)?null:numVal;
+                if(!val)
+                {
+                    return;
                 }
+                valueArray.push(val);
+                lastColValue-=val;
+            }
+            valueArray.push(lastColValue);
+            nodes[nodes.length-1].set('value',lastColValue)
+
+            if(valueArray.length==this.colCount)
+            {
+               var rows=query('#content .table .row');
+
+                for(var i=0;i<rows.length;i++){
+                    var cells=query('.cell',rows[i]);
+                    for(var j=0;j<cells.length;j++){
+                    domStyle.set(cells[j],'width',valueArray[j]+'%');
+                    }
+                }
+
+                cells=query('#contentHeader .table .row .cell');
+                for(var j=0;j<cells.length;j++){
+                    domStyle.set(cells[j],'width',valueArray[j]+'%');
+                }
+
             }
         }
 
