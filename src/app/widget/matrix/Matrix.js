@@ -52,6 +52,10 @@ define([
             {
                 return;
             }
+            var initWidth=Math.floor(100/this.colCount);
+            var lastColWidth=100-initWidth*(this.colCount-1);
+            //offset
+            //lastColWidth-=1;
 
             var table=domC.create("div",{className:"table"});
             var row,cell;
@@ -60,10 +64,12 @@ define([
                 row=domC.create("div",{className:"row"});
                 for(var j=0;j<this.colCount;j++)
                 {
-                    row.appendChild(domC.create("div",{
+                    cell=domC.create("div",{
                         className:"cell",
                         innerHTML:'&nbsp;'
-                    }));
+                    });
+                    domStyle.set(cell,'width',((j+1)==this.colCount?lastColWidth:initWidth)+'%');
+                    row.appendChild(cell);
                 }
                 table.appendChild(row);
             }
@@ -75,9 +81,11 @@ define([
             row=domC.create("div",{className:"row"});
             for(var j=0;j<this.colCount;j++)
             {
-                row.appendChild(domC.create("div",{
+                cell=domC.create("div",{
                     className:"cell"
-                }));
+                });
+                domStyle.set(cell,'width',((j+1)==this.colCount?lastColWidth:initWidth)+'%');
+                row.appendChild(cell);
             }
             table.appendChild(row);
             domC.place(table,"contentHeader");
@@ -85,6 +93,7 @@ define([
             for(var i=0;i<this.colCount;i++)
             {
                 var textBox=new TextBox();
+                textBox.value=(i+1)==this.colCount?lastColWidth:initWidth;
                 domClass.add(textBox.domNode,'widthBox');
                 textBox.watch('value',lang.hitch(this,function(name,oldValue,value){
                     this.setColumnWidth();
@@ -116,13 +125,13 @@ define([
                 for(var i=0;i<rows.length;i++){
                     var cells=query('.cell',rows[i]);
                     for(var j=0;j<cells.length;j++){
-                    domStyle.set(cells[j],'width',valueArray[j]+'%');
+                        domStyle.set(cells[j],'width',(j+1)==cells.length?valueArray[j]:valueArray[j]+'%');
                     }
                 }
 
                 cells=query('#contentHeader .table .row .cell');
                 for(var j=0;j<cells.length;j++){
-                    domStyle.set(cells[j],'width',valueArray[j]+'%');
+                    domStyle.set(cells[j],'width',(j+1)==cells.length?valueArray[j]:valueArray[j]+'%');
                 }
 
             }

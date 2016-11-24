@@ -7,17 +7,18 @@
     width: 800px;
     border-top: solid 1px black;
     border-right: solid 1px black;
-    display: table;
 }
 
 .row{
-    display: table-row;
+    overflow:hidden;
+    clear: both;
+    border-bottom: solid 1px black;
 }
 
 .cell{
-    display: table-cell;
     border-left: solid 1px black;
-    border-bottom: solid 1px black;
+    float:left;
+    box-sizing: border-box;
 }
 
 .widthBox{
@@ -27,6 +28,10 @@
 
 #contentHeader .table .row .cell{
     text-align:center;
+}
+
+#contentHeader .table .row{
+    border-width: 0px;
 }
 
 #contentHeader .table{
