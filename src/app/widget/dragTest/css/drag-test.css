@@ -1,0 +1,93 @@
+.wishlistContainer, .catalogContainer, .cartContainer {
+    float: left;
+    margin-right: 20px;
+    width: 233px;
+}
+
+
+.wishlistContainer .container{
+    height: 300px;
+}
+.catalogContainer .container{
+    height: 300px;
+}
+.tableContainer .container{
+    height: 300px;
+}
+.wishlistContainer ol {
+    /*background: url("images/cart.jpg") no-repeat -20px 60px;*/
+    height: 300px;
+}
+.container {
+    border: 1px solid #aaa;
+    padding: 1px;
+    cursor: default;
+    background: #fff;
+}
+
+.container {
+    border: 1px solid #aaa;
+    padding: 1em;
+    cursor: default;
+    background: #fff;
+}
+
+.dojoxContainer{
+    float: left;
+    margin-right: 20px;
+    width: 800px;
+    height: 300px;
+}
+
+/*.dojoxContainer .container{
+    display: inline;
+}*/
+
+.tableContainer{
+    float: left;
+    margin-right: 20px;
+    width: 600px;
+}
+
+.dragableTableContainer{
+    float: left;
+    margin-right: 20px;
+    width: 600px;
+}
+
+.table {
+	width: 99%;
+	border-top: solid 1px black;
+	border-right: solid 1px black;
+}
+
+.table .row {
+	overflow: hidden;
+	border-bottom: solid 1px black;
+}
+
+.row .cell {
+	float: left;
+	border-left: solid 1px black;
+	box-sizing: border-box;
+	min-height: 70px;
+}
+
+.row .cell:hover{
+    background-color: #aaa
+}
+
+
+.ingridcontainer {
+	display: inline;
+}
+
+.gridContainerTable {
+	width: 100%;
+	min-height: 56px;
+}
+
+.dropIndicator {
+	height: 50px;
+	border: 2px dashed #ff0000;
+}

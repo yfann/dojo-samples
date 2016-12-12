@@ -1,0 +1,77 @@
+<div>
+    <style type="text/css">
+        @import "app/widget/dragTest/css/drag-test.css";
+    </style>
+<div class="catalogContainer">
+    <h2>Catalog</h2>
+    <div data-dojo-type="dojo/dnd/Source" id="catalogNode" class="container"
+        data-dojo-props="copyOnly:true,selfAccept:false,accept:[]">
+      <div class="dojoDndItem inStock" dndType="inStock" data-dojo-props="dndType:'inStock'">
+          <span class="dojoDndHandle">Item</span> <strong>Alpha</strong>
+      </div>
+      <div class="dojoDndItem inStock" dndType="inStock">Life jacket</div>
+      <div class="dojoDndItem inStock" dndType="inStock">Toy bulldozer</div>
+      <div class="dojoDndItem outOfStock" dndType="outOfStock">
+        Vintage microphone</div>
+      <div class="dojoDndItem outOfStock" dndType="outOfStock">
+        TIE fighter</div>
+      <div class="dojoDndItem inStock" dndType="inStock">Apples</div>
+      <div class="dojoDndItem inStock" dndType="inStock">Bananas</div>
+      <div class="dojoDndItem outOfStock" dndType="outOfStock">
+        Tomatoes</div>
+      
+      <div class="dojoDndItem" data-dojo-type="app/widget/ElementButton/ElementButton" data-dojo-props="dndType:'inStock'">Element Button</div>
+    </div>
+</div>
+ 
+<!--<div class="cartContainer">
+    <h2>Cart</h2>
+    <ol data-dojo-type="dojo/dnd/Source" id="cartNode" class="container"
+        data-dojo-props="accept: [ 'inStock' ]" >
+    </ol>
+</div>-->
+<div class="wishlistContainer">
+    <h2>Wishlist</h2>
+    <div data-dojo-type="dojo/dnd/Source" id="wishlistNode"
+        data-dojo-props="accept: [ 'inStock', 'outOfStock' ]"
+        class="container">
+    </div>
+</div>
+<div class="tableContainer">   
+    <h2>table</h2>
+    <div class="table" data-dojo-type="dojo/dnd/Source"
+     data-dojo-props="accept: [ 'inStock', 'outOfStock' ]">
+        <div class="row">
+            <div class="cell" style="width: 50%;"></div>
+            <div class="cell" style="width: 50%;"></div>
+        </div>
+        <div class="row">
+            <div class="cell" style="width: 50%;"></div>
+            <div class="cell" style="width: 50%;"></div>
+        </div>
+    </div>
+</div>
+<div class="dragableTableContainer">   
+    <h2>dragable table</h2>
+    <div class="table" >
+        <div class="row">
+            <div class="cell" style="width: 50%;" data-dojo-type="dojo/dnd/Source"
+     data-dojo-props="accept: [ 'inStock', 'outOfStock' ]"></div>
+            <div class="cell" style="width: 50%;" data-dojo-type="dojo/dnd/Source"
+     data-dojo-props="accept: [ 'inStock', 'outOfStock' ]"></div>
+        </div>
+        <div class="row">
+            <div class="cell" style="width: 50%;" data-dojo-type="dojo/dnd/Source"
+     data-dojo-props="accept: [ 'inStock', 'outOfStock' ]"></div>
+            <div class="cell" style="width: 50%;" data-dojo-type="dojo/dnd/Source"
+     data-dojo-props="accept: [ 'inStock', 'outOfStock' ]"></div>
+        </div>
+    </div>
+</div>
+<div class="dojoxContainer">   
+    <h2>dojox Container</h2>
+    <div data-dojo-attach-point="gridNode" class="container" data-dojo-type="dojox/layout/GridContainer" acceptTypes="inStock,outOfStock" doLayout="false" data-dojo-props="nbZones:2">
+        <div class="dojoDndItem" data-dojo-type="dijit/form/Button" data-dojo-props="dndType:'inStock'">Element Button</div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+table {
+    width:80%;
+}
+table th {
+    font-weight:bold;
+    background-color: lightgrey;
+}
+table, th, td {
+    margin:5px;
+    border:1px solid black;
+    border-collapse: collapse;
+}
+
+.dojoDndItemOver {
+	cursor: default;
+}
+
+.dojoDndHandle {
+    cursor:move
+}
+.delRow {
+    text-align:center;
+    cursor:pointer;
+}
+.delRow:hover {
+    background-color: red;
+}

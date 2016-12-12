@@ -1,3 +1,5 @@
-define(function(){
-
+define([
+],
+function(){
+    console.log('main');
 });

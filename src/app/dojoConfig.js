@@ -21,5 +21,5 @@ dojoConfig = {
         'dojo-firebug' : false,
         'dojo-debug-messages' : true
     },
-    locale : 'zh'
+    // locale : 'zh'
 };
