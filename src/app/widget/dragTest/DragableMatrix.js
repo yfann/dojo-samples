@@ -22,18 +22,17 @@ define([
         rowCount:null,
         colCount:null,
         postCreate:function(){
+            this.rowNode.watch('value',lang.hitch(this,function(){
+                this.initValue();
+                this.generateTable();
+            }));
 
-            // this.rowNode.watch('value',lang.hitch(this,function(){
-            //     this.initValue();
-            //     this.generateTable();
-            // }));
+            this.columnNode.watch('value',lang.hitch(this,function(){
+                this.initValue();
+                this.generateTable();
+            }));
 
-            // this.columnNode.watch('value',lang.hitch(this,function(){
-            //     this.initValue();
-            //     this.generateTable();
-            // }));
-
-            // this.init();
+            //this.init();
         },
         init:function(){
             this.rowNode.set('value',3);

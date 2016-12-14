@@ -12,6 +12,9 @@ define([
         _TemplatedMixin,
         _WidgetsInTemplateMixin
     ],{
-        templateString:template
+        templateString:template,
+        postCreate:function(){
+
+        }
     })
 });
