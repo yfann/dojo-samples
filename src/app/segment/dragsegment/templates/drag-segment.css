@@ -1,15 +1,17 @@
-.dragSeg .source{
+.dragSeg .sourceContainer{
     border:1px solid black;
     height: 500px;
     width: 200px;
     display: inline-block;
+    vertical-align: top;
 }
 
-.dragSeg .target{
+.dragSeg .targetContainer{
     border:1px solid black;
-    height: 500px;
-    width: 400px;
+    min-height: 200px;
+    width: 800px;
     display: inline-block;
     margin: 0 0 0 10px;
     padding: 5px;
+    vertical-align: top;
 }
