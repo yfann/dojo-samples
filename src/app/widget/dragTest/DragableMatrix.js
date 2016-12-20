@@ -1,4 +1,5 @@
 define([
+    'dojo/dnd/Source',
     'app/widget/box/TextBox',
     'dijit/registry',
     'dijit/_WidgetBase',
@@ -12,7 +13,7 @@ define([
     'dojo/_base/lang',
     'dojo/on',
     'dojo/text!./templates/matrix-setting.html'
-],function(TextBox,registry,_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,query,domC,domClass,domStyle,declare,lang,on,template){
+],function(Source,TextBox,registry,_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,query,domC,domClass,domStyle,declare,lang,on,template){
     return declare('app.weidget.Matrix',[
         _WidgetBase,
         _TemplatedMixin,
@@ -21,6 +22,7 @@ define([
         templateString:template,
         rowCount:null,
         colCount:null,
+        accept:['test'],
         postCreate:function(){
             this.rowNode.watch('value',lang.hitch(this,function(){
                 this.initValue();
@@ -57,18 +59,22 @@ define([
             //lastColWidth-=1;
 
             var table=domC.create("div",{className:"table"});
-            var row,cell;
+            var row,cell,widget;
             for(var i=0;i<this.rowCount;i++)
             {
                 row=domC.create("div",{className:"row"});
                 for(var j=0;j<this.colCount;j++)
                 {
-                    cell=domC.create("div",{
-                        className:"cell",
-                        innerHTML:'&nbsp;'
+                    cell = domC.create('div');
+
+                    widget=new Source(cell,{
+                         accept: this.accept
                     });
-                    domStyle.set(cell,'width',((j+1)==this.colCount?lastColWidth:initWidth)+'%');
-                    row.appendChild(cell);
+                    widget.startup();
+
+                    domStyle.set(widget.node,'width',((j+1)==this.colCount?lastColWidth:initWidth)+'%');
+                    domClass.add(widget.node, 'cell');
+                    domC.place(widget.node, row);
                 }
                 table.appendChild(row);
             }
