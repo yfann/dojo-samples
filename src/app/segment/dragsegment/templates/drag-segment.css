@@ -1,6 +1,6 @@
 .dragSeg .sourceContainer{
     border:1px solid black;
-    height: 500px;
+    min-height: 200px;
     width: 200px;
     display: inline-block;
     vertical-align: top;
@@ -14,4 +14,27 @@
     margin: 0 0 0 10px;
     padding: 5px;
     vertical-align: top;
+}
+
+.dragSeg .gridTargetContianer{
+    margin-top:5px;
+    border:1px solid black;
+    min-height: 300px;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.philips .dropIndicator {
+	min-height: 50px;
+	border: 2px dashed #ff0000;
+}
+
+.cpane{
+    border:1px solid #666;
+    font:bold 12px Arial;
+    color:#666;
+    background:#FFF;
+    padding:10px;
+    min-height:50px
 }
