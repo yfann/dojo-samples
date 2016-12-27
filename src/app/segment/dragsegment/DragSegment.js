@@ -1,4 +1,5 @@
 define([
+    'app/segment/dragsegment/NestOverDropMode',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
@@ -6,8 +7,8 @@ define([
     'dojo/_base/lang',
     'dojo/text!./templates/drag-segment.html',
     'dojox/mdnd/adapter/DndFromDojo'
-],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,declare,lang,template,DndFromDojo){
-    return declare('app.segment.DragSegment',[
+],function(NestOverDropMode,_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,declare,lang,template,DndFromDojo){
+    return declare('app.segment.dragsegment.DragSegment',[
         _WidgetBase,
         _TemplatedMixin,
         _WidgetsInTemplateMixin

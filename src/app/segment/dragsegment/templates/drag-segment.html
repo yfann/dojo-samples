@@ -3,7 +3,7 @@
         @import "app/segment/dragsegment/templates/drag-segment.css";
         @import "lib/dojox/layout/resources/GridContainer.css";
     </style>
-    <div id="sourceNode" class="sourceContainer" data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true,selfAccept:false,accept:[]">
+    <!--<div id="sourceNode" class="sourceContainer" data-dojo-type="dojo/dnd/Source" data-dojo-props="copyOnly:true,selfAccept:false,accept:[]">
         <div class="dojoDndItem" dndType="test">drag me1</div>
         <div class="dojoDndItem" dndType="test">drag me2</div>
         <div class="dojoDndItem" dndType="test">drag me3</div>
@@ -14,11 +14,11 @@
     <div id="targetNode" class="sourceContainer" data-dojo-type="dojo/dnd/Source" data-dojo-props="accept: [ 'test' ]"></div>
     <div class="targetContainer">
         <div data-dojo-type="app/widget/dragTest/DragableMatrix"></div>
-    </div>
+    </div>-->
     <div style="width:400px" acceptTypes="test" 
     data-dojo-type="dojox/layout/GridContainer" class="gridTargetContianer">
        <div dojoType="dijit/layout/ContentPane" class="cpane" label="Content Pane" dndType="test">Content TSET</div>
-       <div dojoType="dojox/layout/GridContainer" class="cpane" label="Content Pane" dndType="test"></div>
+       <div dojoType="dojox/layout/GridContainer" class="cpane" label="Content Pane" dndType="test" acceptTypes="test" ></div>
     </div>
     <div style="width:400px" acceptTypes="test" 
     data-dojo-type="dojox/layout/GridContainer" class="gridTargetContianer">
