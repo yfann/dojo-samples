@@ -15,7 +15,8 @@ dojoConfig = {
         'put-selector' : 'lib/put-selector',
         handlebars : 'lib/handlebars/handlebars',
         jquery : 'lib/jquery/jquery',
-        app : 'app'
+        app : 'app',
+        highcharts:'lib/highcharts/highcharts'
     },
     has : {
         'dojo-firebug' : false,

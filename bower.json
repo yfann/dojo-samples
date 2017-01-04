@@ -18,6 +18,7 @@
   "dependencies": {
     "dojo": "dojo/dojo#^1.11.2",
     "dijit": "dojo/dijit#^1.11.2",
-    "dgrid": "^1.1.0"
+    "dgrid": "^1.1.0",
+    "highcharts": "^5.0.6"
   }
 }
