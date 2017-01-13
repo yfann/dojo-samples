@@ -1,0 +1,35 @@
+/*.highcharts-legend-item text {
+  fill: #ff0000;
+  font-weight: bold;
+  cursor: pointer;
+  stroke-width: 0;
+}*/
+.layout{
+  border:1px solid black;
+  width: 800px;
+  height: 700px;
+}
+/*.layout .sub{
+  border:1px solid black;
+  width: 60%;
+  height: 50%;
+}*/
+
+.layout .chartNode{
+    border:1px solid black;
+  width: 60%;
+  height: 50%;
+}
+
+/*.chartDemo{
+  background-color: #1e1e1e;
+  height: 500px;
+  width:500px;
+  display: inline-block;
+}*/
+/*.chartNode{
+  background-color: blue;
+  height: 500px;
+  width:500px;
+  display: inline-block;
+}*/

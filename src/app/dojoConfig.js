@@ -16,7 +16,8 @@ dojoConfig = {
         handlebars : 'lib/handlebars/handlebars',
         jquery : 'lib/jquery/jquery',
         app : 'app',
-        highcharts:'lib/highcharts/highcharts'
+        //highcharts:'lib/highcharts/highcharts'
+        highcharts:'lib/highcharts/js/highcharts'
     },
     has : {
         'dojo-firebug' : false,
