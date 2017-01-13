@@ -5,10 +5,11 @@ define([
     'dojo/_base/declare',
     'dojo/on',
     'dojo/_base/lang',
+'dojo/dom-style', 
     'dojo/text!./templates/chart-demo.html',
     //'dojo/domReady!',
     'highcharts'
-],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,declare,on,lang,template){
+],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,declare,on,lang,domStyle,template){
     return declare('app.widget.highchart.BarChart',[
         _WidgetBase,
         _TemplatedMixin,
@@ -17,10 +18,10 @@ define([
         templateString:template,
         chart:null,
         postCreate:function(){
-             
-            
+             domStyle.set(this.chartNode,'width','60%');
+             domStyle.set(this.chartNode,'height','60%');
 
-                setTimeout(lang.hitch(this,function(){
+                 setTimeout(lang.hitch(this,function(){
                    //this.chart.reflow();
 this.chart=Highcharts.chart(this.chartNode, {
                 title: {
@@ -50,7 +51,7 @@ this.chart=Highcharts.chart(this.chartNode, {
                 });
 
                    
-                }),0);
+                 }),0);
 
                 // on(this.buttonNode,'click',lang.hitch(this,function(){
                     
