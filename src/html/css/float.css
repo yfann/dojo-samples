@@ -1,0 +1,15 @@
+.floatdiv{
+    width:600px;
+    height:300px;
+    background-color: #ff2288;
+    /*float: left;*/
+    top:10px;
+    left:10px;
+    position: absolute;
+}
+
+.normaldiv{
+   width:600px;
+    height:400px;
+    background-color: #2288ff
+}

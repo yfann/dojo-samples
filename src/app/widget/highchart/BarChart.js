@@ -18,8 +18,8 @@ define([
         templateString:template,
         chart:null,
         postCreate:function(){
-             domStyle.set(this.chartNode,'width','60%');
-             domStyle.set(this.chartNode,'height','60%');
+            //  domStyle.set(this.chartNode,'width','90%');
+            //  domStyle.set(this.chartNode,'height','90%');
 
                  setTimeout(lang.hitch(this,function(){
                    //this.chart.reflow();
@@ -31,11 +31,14 @@ this.chart=Highcharts.chart(this.chartNode, {
                 xAxis: {
                     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
                 },
-
+                credits : {
+                    enabled : false
+                },
                 series: [{
-                    type: 'pie',
+                    type: 'bar',
                     allowPointSelect: true,
                     keys: ['name', 'y', 'selected', 'sliced'],
+                    colorByPoint: true,
                     data: [
                     ['Apples', 29.9, false],
                     ['Pears', 71.5, false],
@@ -43,7 +46,7 @@ this.chart=Highcharts.chart(this.chartNode, {
                     ['Plums', 129.2, false],
                     ['Bananas', 144.0, false],
                     ['Peaches', 176.0, false],
-                    ['Prunes', 135.6, true, true],
+                    ['Prunes', 135.6, true],
                     ['Avocados', 148.5, false]
                     ],
                     showInLegend: true
