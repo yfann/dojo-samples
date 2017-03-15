@@ -1,0 +1,8 @@
+body {
+    counter-reset: my-badass-counter;
+}
+
+.container div:after{
+    content:"#"counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+}
