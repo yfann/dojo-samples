@@ -8,41 +8,43 @@ define([
     'dgrid/Selection',
     'dojo/store/Memory',
     'dstore/legacy/StoreAdapter',
+    'dojo/_base/lang',
     'dojo/_base/declare',
     'dojo/text!./templates/my-grid.html'
 ],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,on,Grid,OnDemandGrid,Selection,
-Memory,StoreAdapter,declare,template){
+Memory,StoreAdapter,lang,declare,template){
     return declare('app.weidget.MyGrid',[
         _WidgetBase,
         _TemplatedMixin,
         _WidgetsInTemplateMixin
     ],{
         templateString:template,
+        selectedRow:null,
         data:[
-                { first: 'Bob', last: 'Barker', age: 89 ,order:1},
-                { first: 'Vanna', last: 'White', age: 55 ,order:2},
-                { first: 'Pat', last: 'Sajak', age: 65 ,order:3},
-                { first: 'Fan', last: 'Sajak', age: 65 ,order:4},
-                { first: 'Lee', last: 'Tan', age: 89 ,order:5},
-                { first: 'Van', last: 'Tian', age: 55 ,order:6},
-                { first: 'Vi', last: 'Vi', age: 65 ,order:7},
-                { first: 'Pit', last: 'Pit', age: 65 ,order:8},
-                { first: 'U', last: 'V', age: 89 ,order:9},
-                { first: 'Wei', last: 'Dan', age: 55 ,order:10},
-                { first: 'Hen', last: 'Ren', age: 65 ,order:11},
-                { first: 'Hee', last: 'Sajak', age: 65 ,order:12},
-                { first: 'Loo', last: 'Barker', age: 89 ,order:13},
-                { first: 'Poo', last: 'White', age: 55 ,order:14},
-                { first: 'Yuu', last: 'Sajak', age: 65 ,order:15},
-                { first: 'Dk', last: 'Sajak', age: 65 ,order:16},
-                { first: 'Lk', last: 'Barker', age: 89 ,order:17},
-                { first: 'Po', last: 'White', age: 55 ,order:18},
-                { first: 'Dev', last: 'Sajak', age: 65 ,order:19},
-                { first: 'QS', last: 'Sajak', age: 65 ,order:20},
-                { first: 'QE', last: 'Barker', age: 89 ,order:21},
-                { first: 'Ui', last: 'White', age: 55 ,order:22},
-                { first: 'Lili', last: 'Sajak', age: 65 ,order:23},
-                { first: 'Papa', last: 'Sajak', age: 65 ,order:24}
+                { id:1,first: 'Bob', last: 'Barker', age: 89 ,order:1},
+                { id:2,first: 'Vanna', last: 'White', age: 55 ,order:2},
+                { id:3,first: 'Pat', last: 'Sajak', age: 65 ,order:3},
+                { id:4,first: 'Fan', last: 'Sajak', age: 65 ,order:4},
+                { id:5,first: 'Lee', last: 'Tan', age: 89 ,order:5},
+                { id:6,first: 'Van', last: 'Tian', age: 55 ,order:6},
+                { id:7,first: 'Vi', last: 'Vi', age: 65 ,order:7},
+                { id:8,first: 'Pit', last: 'Pit', age: 65 ,order:8},
+                { id:9,first: 'U', last: 'V', age: 89 ,order:9},
+                { id:10,first: 'Wei', last: 'Dan', age: 55 ,order:10},
+                { id:11,first: 'Hen', last: 'Ren', age: 65 ,order:11},
+                { id:12,first: 'Hee', last: 'Sajak', age: 65 ,order:12},
+                { id:13,first: 'Loo', last: 'Barker', age: 89 ,order:13},
+                { id:14,first: 'Poo', last: 'White', age: 55 ,order:14},
+                { id:15,first: 'Yuu', last: 'Sajak', age: 65 ,order:15},
+                { id:16,first: 'Dk', last: 'Sajak', age: 65 ,order:16},
+                { id:17,first: 'Lk', last: 'Barker', age: 89 ,order:17},
+                { id:18,first: 'Po', last: 'White', age: 55 ,order:18},
+                { id:19,first: 'Dev', last: 'Sajak', age: 65 ,order:19},
+                { id:20,first: 'QS', last: 'Sajak', age: 65 ,order:20},
+                { id:21,first: 'QE', last: 'Barker', age: 89 ,order:21},
+                { id:22,first: 'Ui', last: 'White', age: 55 ,order:22},
+                { id:23,first: 'Lili', last: 'Sajak', age: 65 ,order:23},
+                { id:24,first: 'Papa', last: 'Sajak', age: 65 ,order:24}
             ],
         postCreate:function(){
             var columns = [
@@ -73,18 +75,19 @@ Memory,StoreAdapter,declare,template){
             this.grid=new (declare([ OnDemandGrid, Selection ]))({
                 columns:columns,
                 keepScrollPosition:true,
-                selectionMode : 'toggle'//single  multiple
+                selectionMode : 'single'//single  multiple
             }, this.gridPoint);
 
 
-            this.grid.on('dgrid-select', function (event) {
+            this.grid.on('dgrid-select', lang.hitch(this,function (event) {
                 var rows = event.rows;
+                this.selectedRow=rows[0];
                 // for (var id in grid.selection) {
                 //     if (grid.selection[id]) {
                 //         // ...
                 //     }
                 // }
-            });
+            }));
             this.grid.on('dgrid-deselect', function (event) {
             });
 
@@ -112,17 +115,41 @@ Memory,StoreAdapter,declare,template){
 
         //grid.renderArray(this.data);
 
-        var _this=this;
-            on(this.buttonNode,'click',function(){
-                _this.grid.set("sort",[{
-                        descending:true,
+            on(this.buttonNode,'click',lang.hitch(this,function(){
+                this.sort();
+              //_this.grid.set("sort","age",true);
+            }));
+
+            on(this.upNode,'click',lang.hitch(this,function(){
+                this.goUp();
+            }));
+
+        },
+        sort:function(){
+             this.grid.set("sort",[{
+                        descending:false,
                         property:"order"
                     }]);
-
-              //_this.grid.set("sort","age",true);
-            });
-
+        },
+        goUp:function(){
+            var target=target=this.store.query({id:this.selectedRow.id})[0];
+            // for (var id in this.grid.selection) {
+            //     if (this.grid.selection[id]) {
+            //         target=this.store.query({id:id})[0];
+            //         break;
+            //     }
+            // }
+            var sibling=this.store.query({order:target.order-1})[0];
+            var temp=target.order;
+            target.order=sibling.order;
+            sibling.order=temp;
+            this.store.put(target);
+            this.store.put(sibling);
+            this.sort();
+        },
+        goDown:function(){
 
         }
+
     })
 });
