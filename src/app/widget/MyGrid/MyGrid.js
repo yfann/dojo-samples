@@ -124,6 +124,10 @@ Memory,StoreAdapter,lang,declare,template){
                 this.goUp();
             }));
 
+            on(this.downNode,'click',lang.hitch(this,function(){
+                this.goDown();
+            }));
+
         },
         sort:function(){
              this.grid.set("sort",[{
@@ -139,16 +143,33 @@ Memory,StoreAdapter,lang,declare,template){
             //         break;
             //     }
             // }
-            var sibling=this.store.query({order:target.order-1})[0];
-            var temp=target.order;
-            target.order=sibling.order;
-            sibling.order=temp;
-            this.store.put(target);
-            this.store.put(sibling);
-            this.sort();
+            if(target.order>1){
+                var sibling=this.store.query({order:target.order-1})[0];
+                var temp=target.order;
+                target.order=sibling.order;
+                sibling.order=temp;
+                this.store.put(target);
+                this.store.put(sibling);
+                this.sort();
+            }
         },
         goDown:function(){
-
+            var target=target=this.store.query({id:this.selectedRow.id})[0];
+            // for (var id in this.grid.selection) {
+            //     if (this.grid.selection[id]) {
+            //         target=this.store.query({id:id})[0];
+            //         break;
+            //     }
+            // }
+            if(target.order>1){
+                var sibling=this.store.query({order:target.order+1})[0];
+                var temp=target.order;
+                target.order=sibling.order;
+                sibling.order=temp;
+                this.store.put(target);
+                this.store.put(sibling);
+                this.sort();
+            }
         }
 
     })
