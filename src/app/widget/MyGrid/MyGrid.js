@@ -5,14 +5,15 @@ define([
     'dojo/on',
     'dgrid/Grid',
     'dgrid/OnDemandGrid',
-    'dgrid/Selection',
+    'dgrid/Selector',
     'dojo/store/Memory',
     'dstore/legacy/StoreAdapter',
     'dojo/_base/lang',
+    'dojo/dom',
     'dojo/_base/declare',
     'dojo/text!./templates/my-grid.html'
-],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,on,Grid,OnDemandGrid,Selection,
-Memory,StoreAdapter,lang,declare,template){
+],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,on,Grid,OnDemandGrid,Selector,
+Memory,StoreAdapter,lang,dom,declare,template){
     return declare('app.weidget.MyGrid',[
         _WidgetBase,
         _TemplatedMixin,
@@ -72,7 +73,7 @@ Memory,StoreAdapter,lang,declare,template){
             // },this.gridPoint);
 
 
-            this.grid=new (declare([ OnDemandGrid, Selection ]))({
+            this.grid=new (declare([ OnDemandGrid, Selector ]))({
                 columns:columns,
                 keepScrollPosition:true,
                 selectionMode : 'single'//single  multiple
@@ -134,6 +135,8 @@ Memory,StoreAdapter,lang,declare,template){
                         descending:false,
                         property:"order"
                     }]);
+            this.grid.select(dom.byId(this.selectedRow.element.id));
+            console.log(this.selectedRow.element);
         },
         goUp:function(){
             var target=target=this.store.query({id:this.selectedRow.id})[0];
