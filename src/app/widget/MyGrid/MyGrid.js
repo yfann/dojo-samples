@@ -60,6 +60,10 @@ Memory,StoreAdapter,lang,dom,declare,template){
                                 {
                                     field: 'age',
                                     label: 'Age'
+                                },
+                                {
+                                    field: 'order',
+                                    label: 'Order'
                                 }
                             ];
             // this.grid=new OnDemandGrid({
