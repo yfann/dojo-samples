@@ -11,9 +11,10 @@ define([
     'dojo/_base/lang',
     'dojo/dom',
     'dojo/_base/declare',
-    'dojo/text!./templates/my-grid.html'
+    'dojo/dnd',
+    'dojo/text!./templates/my-grid.html',
 ],function(_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin,on,Grid,OnDemandGrid,Selector,
-Memory,StoreAdapter,lang,dom,declare,template){
+Memory,StoreAdapter,lang,dom,declare,dnd,template){
     return declare('app.weidget.MyGrid',[
         _WidgetBase,
         _TemplatedMixin,
