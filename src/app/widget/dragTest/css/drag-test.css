@@ -91,3 +91,16 @@
 	height: 50px;
 	border: 2px dashed #ff0000;
 }
+
+.mouseMoveArea{
+    width:600px;
+    height:400px;
+    border:1px solid blue;
+    float:left;
+}
+
+.dragme{
+    width:150px;
+    height:40px;
+    background-color: red;
+}
